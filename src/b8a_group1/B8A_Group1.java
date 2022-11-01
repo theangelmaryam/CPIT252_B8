@@ -18,6 +18,9 @@ public class B8A_Group1 {
         // TODO code application logic here
         System.out.println("Hello, I'm Maryam Bahwal");
         System.out.println("I just did the configuration of my global name and my email on git");
+        System.out.println("Hello I'm Hayat Alzhrani");
+        System.out.println("Hello i'm Alromisaa Alghamdi");
+        System.out.println("Hello , I'm Mona Alasami ");
     }
     
 }
