@@ -5,6 +5,8 @@
  */
 package b8a_group1;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author PC
@@ -21,7 +23,29 @@ public class BookClass {
         this.year = year;
         this.price = price;
     }
+    public static BookClass addBook(String title, String author, int year, double price){
+        BookClass book = new BookClass(title, author, year, price);
+        return book;
+    }
     
+    public static boolean checkBook(String bookTitle, ArrayList<BookClass> array) {
+        boolean approvol = false;
+        if (array.isEmpty()) {
+            approvol = true;
+        } else {
+            for (int i = 0; i < array.size(); i++) {
+                if (bookTitle.equalsIgnoreCase(array.get(i).title)) {
+                    approvol = false;
+                } else {
+                    approvol = true;
+                }
+            }
+        }
+        return approvol;
+    }
     
-    
+    public String toString() {
+        return "Book Title: " + this.title + " Book Author: " + this.auther + " Publish Year: " + this.year
+                + " Price: " + this.price;
+    }
 }
