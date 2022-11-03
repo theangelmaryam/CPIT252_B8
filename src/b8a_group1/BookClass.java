@@ -28,6 +28,11 @@ public class BookClass {
         return book;
     }
     
+    public static BookClass deleteBook(BookClass book){
+        book=null;
+        return book;
+    }
+    
     public static boolean checkBook(String bookTitle, ArrayList<BookClass> array) {
         boolean approvol = false;
         if (array.isEmpty()) {

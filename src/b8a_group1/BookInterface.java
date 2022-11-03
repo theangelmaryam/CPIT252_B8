@@ -7,6 +7,7 @@ package b8a_group1;
 
 import java.util.ArrayList;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -14,10 +15,12 @@ import javax.swing.table.DefaultTableModel;
  * @author PC
  */
 public class BookInterface extends javax.swing.JFrame {
-ArrayList<BookClass> bookList;
+
+    ArrayList<BookClass> bookList;
     String header[] = new String[]{"Book Title", "Book Author", "Book Year", "Book Price"};
     DefaultTableModel dtm;
     int row, col;
+
     /**
      * Creates new form Librarian
      */
@@ -137,7 +140,6 @@ ArrayList<BookClass> bookList;
         jTextBookPrice.setBackground(new java.awt.Color(209, 223, 236));
 
         jTable2.setBackground(new java.awt.Color(209, 223, 236));
-        jTable2.setForeground(new java.awt.Color(0, 51, 102));
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -149,8 +151,7 @@ ArrayList<BookClass> bookList;
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jTable2.setGridColor(new java.awt.Color(89, 104, 178));
-        jTable2.setSelectionForeground(new java.awt.Color(89, 104, 178));
+        jTable2.setGridColor(new java.awt.Color(228, 231, 245));
         jScrollPane2.setViewportView(jTable2);
 
         checkMessage.setText(" ");
@@ -256,7 +257,7 @@ ArrayList<BookClass> bookList;
         double bookPrice = Double.parseDouble(jTextBookPrice.getText());
         // check if the book already added or not
         if (BookClass.checkBook(bookTitle, bookList)) {
-           bookList.add(BookClass.addBook(bookTitle, bookAuthor, bookYear, bookPrice));
+            bookList.add(BookClass.addBook(bookTitle, bookAuthor, bookYear, bookPrice));
             checkMessage.setText("The Book Has Been Added Successfully");
         } else {
             checkMessage.setText("Book Already Added In The System!");
@@ -279,7 +280,21 @@ ArrayList<BookClass> bookList;
         jTextBookPrice.setText("");
     }
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+        int dialogButton = JOptionPane.YES_NO_OPTION;
+        int dialogResult = JOptionPane.showConfirmDialog(this, "Delete this data", "Delete", dialogButton);
+        if (dialogResult == 0) {
+            dtm.removeRow(row);
+            BookClass.deleteBook((bookList.get(row)));
+            bookList.remove(row);
+           
+            dtm.setRowCount(0);//reset table and populate again with bookList
+            for (int i = 0; i < bookList.size(); i++) {
+                Object[] objs = {bookList.get(i).title, bookList.get(i).auther, bookList.get(i).year, bookList.get(i).price};
+                dtm.addRow(objs);
+            }
+            checkMessage.setText("The Book Deleted From The System!");
+            clearField();
+        } 
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -289,10 +304,10 @@ ArrayList<BookClass> bookList;
     Home home = null;
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        if(home == null){
+        if (home == null) {
             home = new Home();
         }
-        
+
         home.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton4ActionPerformed

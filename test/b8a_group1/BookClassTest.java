@@ -73,5 +73,35 @@ public class BookClassTest {
         fail("The test case is a prototype.");
     }
 
+    /**
+     * Test of deleteBook method, of class BookClass.
+     */
+    @Test
+    public void testDeleteBook() {
+        System.out.println("deleteBook");
+        String title = "And Then There Were None";
+        String author = "Agatha Christie";
+        int year = 1939;
+        double price = 41.0;
+        BookClass instance = new BookClass(title, author, year, price);        
+        Object result = BookClass.deleteBook(instance);;
+        Object expResult = null;
+        assertEquals(expResult, result);
+    }
+
+    /**
+     * Test of toString method, of class BookClass.
+     */
+    @Test
+    public void testToString() {
+        System.out.println("toString");
+        BookClass instance = null;
+        String expResult = "";
+        String result = instance.toString();
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
     
 }
