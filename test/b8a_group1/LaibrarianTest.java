@@ -5,6 +5,8 @@
  */
 package b8a_group1;
 
+import static b8a_group1.Book.bookList;
+import java.util.ArrayList;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -38,7 +40,7 @@ public class LaibrarianTest {
     }
 
     /**
-     * Test of addBook method, of class Laibrarian.
+     * Test of addBook method, of class Librarian.
      */
     @Test
     public void testAddBook() {
@@ -48,14 +50,18 @@ public class LaibrarianTest {
         int year = 1939;
         double price = 41.0;
         Book instance = new Book(title, author, year, price);
-        String result = instance.toString();
-        String expResult = "Book Title: And Then There Were None Book Author: Agatha Christie Publish Year: 1939 Price: 41.0";
-        
-        assertEquals(expResult, result);
+        bookList.add(instance);
+        for (int i = 0; i < bookList.size(); i++) {
+            if(bookList.get(i).title.equals(instance)){
+           String result = bookList.get(i).toString();
+           String expResult = "Book Title: And Then There Were None Book Author: Agatha Christie Publish Year: 1939 Price: 41.0";
+           assertEquals(expResult, result);
+            }
+        }
     }
 
     /**
-     * Test of deleteBook method, of class Laibrarian.
+     * Test of deleteBook method, of class Librarian.
      */
     @Test
     public void testDeleteBook() throws Exception {
@@ -64,10 +70,14 @@ public class LaibrarianTest {
         String author = "Agatha Christie";
         int year = 1939;
         double price = 41.0;
-        Book instance = new Book(title, author, year, price);        
-        Object result = Laibrarian.deleteBook(0);;
-        Object expResult = null;
-        assertEquals(expResult, result);
-    }
-    
+        Book instance = new Book(title, author, year, price);
+        bookList.add(instance);
+        for (int i = 0; i < bookList.size(); i++) {
+            if(bookList.get(i).title.equals(instance)){
+            Object result = Laibrarian.deleteBook(i);;
+            Object expResult = null;
+            assertEquals(expResult, result);
+            }
+        }       
+    }   
 }
