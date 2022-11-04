@@ -95,11 +95,11 @@ public class Home extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    BookInterface book = null;
+    LibrarianInterface book = null;
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         if(book == null){
-            book = new BookInterface();
+            book = new LibrarianInterface();
         }
         
         book.setVisible(true);

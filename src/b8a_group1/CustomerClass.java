@@ -9,9 +9,8 @@ package b8a_group1;
  *
  * @author PC
  */
-public class CustomerClass {
-    String first_name;
-    String last_name;
+public class CustomerClass extends User{
+    String email;
     String phone_number;
     
     public CustomerClass( String first_name, String last_name, String phone_number){
@@ -19,4 +18,6 @@ public class CustomerClass {
     this.last_name = last_name;
     this.phone_number = phone_number;
     }
+    
+    
 }

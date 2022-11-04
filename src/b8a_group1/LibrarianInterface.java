@@ -5,7 +5,11 @@
  */
 package b8a_group1;
 
+
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -14,9 +18,9 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author PC
  */
-public class BookInterface extends javax.swing.JFrame {
+public class LibrarianInterface extends javax.swing.JFrame {
 
-    ArrayList<BookClass> bookList;
+    //public ArrayList<Book> bookList;
     String header[] = new String[]{"Book Title", "Book Author", "Book Year", "Book Price"};
     DefaultTableModel dtm;
     int row, col;
@@ -24,12 +28,13 @@ public class BookInterface extends javax.swing.JFrame {
     /**
      * Creates new form Librarian
      */
-    public BookInterface() {
+    public LibrarianInterface() {
         initComponents();
-        bookList = new ArrayList<>();
+        // set table header and content
         dtm = new DefaultTableModel(header, 0);
         jTable2.setModel(dtm);
         this.setLocationRelativeTo(null);
+        restTable();
     }
 
     /**
@@ -47,7 +52,7 @@ public class BookInterface extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        Search = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -99,11 +104,11 @@ public class BookInterface extends javax.swing.JFrame {
             }
         });
 
-        jButton3.setBackground(new java.awt.Color(89, 104, 178));
-        jButton3.setText("Search");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        Search.setBackground(new java.awt.Color(89, 104, 178));
+        Search.setText("Search");
+        Search.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                SearchActionPerformed(evt);
             }
         });
 
@@ -152,6 +157,11 @@ public class BookInterface extends javax.swing.JFrame {
             }
         ));
         jTable2.setGridColor(new java.awt.Color(228, 231, 245));
+        jTable2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable2MouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(jTable2);
 
         checkMessage.setText(" ");
@@ -190,7 +200,7 @@ public class BookInterface extends javax.swing.JFrame {
                                         .addGroup(jPanel1Layout.createSequentialGroup()
                                             .addComponent(jTextBookYear, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(Search, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                             .addComponent(jTextBookAuthor, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -219,7 +229,7 @@ public class BookInterface extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(jTextBookYear, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Search, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
@@ -249,29 +259,32 @@ public class BookInterface extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        
+        
         checkMessage.setHorizontalAlignment(JLabel.CENTER);
         String bookTitle = jTextBookTitle.getText();
         String bookAuthor = jTextBookAuthor.getText();
         int bookYear = Integer.parseInt(jTextBookYear.getText());
         double bookPrice = Double.parseDouble(jTextBookPrice.getText());
         // check if the book already added or not
-        if (BookClass.checkBook(bookTitle, bookList)) {
-            bookList.add(BookClass.addBook(bookTitle, bookAuthor, bookYear, bookPrice));
-            checkMessage.setText("The Book Has Been Added Successfully");
-        } else {
+        if (Book.isAvailable(bookTitle)) {
             checkMessage.setText("Book Already Added In The System!");
+        } else {
+            try {
+                Laibrarian.addBook(bookTitle, bookAuthor, bookYear, bookPrice);
+            } catch (Exception ex) {
+                Logger.getLogger(LibrarianInterface.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            checkMessage.setText("The Book Has Been Added Successfully");
         }
-
-        dtm.setRowCount(0);
-        for (int i = 0; i < bookList.size(); i++) {
-            Object[] objs = {bookList.get(i).title, bookList.get(i).auther, bookList.get(i).year, bookList.get(i).price};
-            dtm.addRow(objs);
-        }
+        // reset table contect by all book in the system
+        restTable();
+        //clear saerch field 
         clearField();
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    // clear saerch field 
     private void clearField() {
         jTextBookTitle.requestFocus();
         jTextBookTitle.setText("");
@@ -279,27 +292,52 @@ public class BookInterface extends javax.swing.JFrame {
         jTextBookYear.setText("");
         jTextBookPrice.setText("");
     }
+    
+    // reset the table contant by all book in the system
+    private void restTable(){
+        dtm.setRowCount(0);
+        for (int i = 0; i < Book.bookList.size(); i++) {
+            Object[] objs = {Book.bookList.get(i).title, Book.bookList.get(i).auther, Book.bookList.get(i).year, Book.bookList.get(i).price};
+            dtm.addRow(objs);
+        }
+    
+    }
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         int dialogButton = JOptionPane.YES_NO_OPTION;
         int dialogResult = JOptionPane.showConfirmDialog(this, "Delete this data", "Delete", dialogButton);
         if (dialogResult == 0) {
             dtm.removeRow(row);
-            BookClass.deleteBook((bookList.get(row)));
-            bookList.remove(row);
+            Book book = null;
+            try {
+                book = Laibrarian.deleteBook(row);
+            } catch (Exception ex) {
+                Logger.getLogger(LibrarianInterface.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
            
             dtm.setRowCount(0);//reset table and populate again with bookList
-            for (int i = 0; i < bookList.size(); i++) {
-                Object[] objs = {bookList.get(i).title, bookList.get(i).auther, bookList.get(i).year, bookList.get(i).price};
+            for (int i = 0; i < Book.bookList.size(); i++) {
+                Object[] objs = {Book.bookList.get(i).title, Book.bookList.get(i).auther, Book.bookList.get(i).year, Book.bookList.get(i).price};
                 dtm.addRow(objs);
             }
-            checkMessage.setText("The Book Deleted From The System!");
+            checkMessage.setText(book.title+ " Was Delete From The System!");
             clearField();
         } 
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void SearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+       
+        // set lable for dialog
+       String input = JOptionPane.showInputDialog(this,"Search For Book");
+       // check if the book exist
+       Book book = Laibrarian.search(input);
+            if (book != null) {
+                JOptionPane.showMessageDialog(Search, "Found!", "Search book", 2);
+            }
+            else 
+                JOptionPane.showMessageDialog(Search, "Not Found!", "Search book", 2);
+    }//GEN-LAST:event_SearchActionPerformed
 
     Home home = null;
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -311,6 +349,18 @@ public class BookInterface extends javax.swing.JFrame {
         home.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jTable2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable2MouseClicked
+        // TODO add your handling code here:
+        row = jTable2.getSelectedRow();
+        col = jTable2.getColumnCount();
+        System.out.println(row+","+col);
+        jTextBookTitle.setText(dtm.getValueAt(row, 0).toString());
+        jTextBookAuthor.setText(dtm.getValueAt(row, 1).toString());
+        jTextBookYear.setText(dtm.getValueAt(row, 1).toString());
+        jTextBookPrice.setText(dtm.getValueAt(row, 1).toString());
+        
+    }//GEN-LAST:event_jTable2MouseClicked
 
     /**
      * @param args the command line arguments
@@ -329,29 +379,36 @@ public class BookInterface extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(BookInterface.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LibrarianInterface.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(BookInterface.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LibrarianInterface.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(BookInterface.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LibrarianInterface.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(BookInterface.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LibrarianInterface.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new BookInterface().setVisible(true);
+                new LibrarianInterface().setVisible(true);
             }
         });
+        
+        // initiliz book list by file contant
+        try {
+            Book.initilizBookList();
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(LibrarianInterface.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Search;
     private javax.swing.JLabel checkMessage;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
