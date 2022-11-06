@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author PC
+ * @author Mona
  */
 public class CartItemClass {
    double price;

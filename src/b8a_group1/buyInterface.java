@@ -17,7 +17,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author AHMAD
+ * @author Mona
  */
 public class buyInterface extends javax.swing.JFrame {
 
