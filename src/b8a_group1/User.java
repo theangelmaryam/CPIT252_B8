@@ -19,6 +19,7 @@ public class User {
     String password;
     String phone_no;
     int ID;
+  static  boolean successfulPayment;
     
 
     public User() {
@@ -63,6 +64,7 @@ public class User {
             CartItemList.clear();
             Payment.append("=================================\n"+"              Thank you  \n"+"=================================\n");
 
+            successfulPayment = true;
             return Payment.toString();
         
     }

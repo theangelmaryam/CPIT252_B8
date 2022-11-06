@@ -46,9 +46,8 @@ public class UserTest {
     public void testSearch() {
         System.out.println("search");
         String bookTitle = "And Then There Were None";
-        ArrayList<Book> array = new ArrayList<Book>();
         Book book = new Book("And Then There Were None","Agatha Christie",1939,41.0);
-        array.add(book);
+        Book.bookList.add(book);
         Book expResult = book;
         Book result = User.search(bookTitle);
         assertEquals(expResult, result);
@@ -66,8 +65,9 @@ public class UserTest {
         CartItemClass instance = new CartItemClass(price,title);
         CartItemList.add(instance);
         User user = new User("mona","alasami" ,"056435678"); 
-        String expResult = "41.0 And Then There Were None ";
-        String result = User.Buy(CartItemList, user);
+        User.Buy(CartItemList, user);
+        boolean expResult = true;
+        boolean result = User.successfulPayment; 
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         //fail("The test case is a prototype.");
