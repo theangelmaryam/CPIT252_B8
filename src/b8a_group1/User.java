@@ -46,32 +46,22 @@ public class User {
     public static String Buy(ArrayList<CartItemClass>CartItemList,User user){
            
         StringBuilder Payment = new StringBuilder();
-          Date oj = new Date() ;
-        String date = oj.toString() ; 
-             Payment.append(date);
-        Payment.append("\n");
-
-        Payment.append("================================= \n");
-            Payment.append("             Welcome To Books Store  \n");
-            Payment.append("================================= \n");
-        Payment.append("Selected Books:");
+       Date oj = new Date() ;
+       String date = oj.toString() ; 
+       Payment.append(date+"\n"+"=================================\n"+"              Welcome To Books Store\n"+"=================================\n");
+           
+       Payment.append("Selected Books:\n");
 
             for (int i = 0; i < CartItemList.size(); i++) {
                 Payment.append(CartItemList.get(i).title + "\t");
 
             }
              
-            Payment.append("\n");
-            Payment.append("TotalPrice:" + CartItemClass.calculateTotalPrice(CartItemList) + "\n");
-            Payment.append("\n");
-            Payment.append("Customer Information : \n");
-            Payment.append("FirstName:" + user.first_name + "\n");
-            Payment.append("LastName:" + user.last_name+ "\n");
-            Payment.append("Phone Number:" + user.phone_no+"\n");
+            Payment.append("TotalPrice:"+CartItemClass.calculateTotalPrice(CartItemList)+"\n\n"+"Customer Information : \n");
+            Payment.append("FirstName:"+user.first_name+"\n"+"LastName:"+user.last_name+"\n"+"Phone Number:"+user.phone_no+"\n");
+           
             CartItemList.clear();
-            Payment.append("================================= \n");
-            Payment.append("              Thank you  \n");
-            Payment.append("================================= \n");
+            Payment.append("=================================\n"+"              Thank you  \n"+"=================================\n");
 
             return Payment.toString();
         
