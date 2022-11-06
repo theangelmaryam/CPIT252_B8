@@ -1,4 +1,0 @@
-title,auther,year,price
-Java, nn, 1995, 80.00
-Database, Mar, 1990, 100.00
-Compiler, sd, 2000, 70.00
