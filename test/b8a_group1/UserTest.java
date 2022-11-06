@@ -53,5 +53,22 @@ public class UserTest {
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
     }
+
+    /**
+     * Test of Buy method, of class User.
+     */
+    @Test
+    public void testBuy() {
+        System.out.println("Buy");
+        ArrayList<CartItemClass> CartItemList = new ArrayList<CartItemClass>();
+        User user = new User("mona","alasami" ,"056435678");
+        StringBuilder Payment = new StringBuilder();
+
+        String expResult = null ;
+        String result = User.Buy(CartItemList, user);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        //fail("The test case is a prototype.");
+    }
     
 }

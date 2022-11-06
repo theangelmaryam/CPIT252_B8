@@ -56,7 +56,7 @@ public class Laibrarian extends User  {
             double price = read.nextDouble();
             Book currentBook = new Book(titel,auther,yaer,price);
             // check if the current book is not the book that we want to delete it, then add it to the tempArray
-            if (!book.title.equalsIgnoreCase(book.title)) {
+            if (!currentBook.title.equalsIgnoreCase(book.title)) {
                 tempArray.add(currentBook);
             }
         }

@@ -75,6 +75,11 @@ public class CustomerInterface extends javax.swing.JFrame {
 
         Buy.setBackground(new java.awt.Color(89, 104, 178));
         Buy.setText("Buy");
+        Buy.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BuyActionPerformed(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 51, 102));
@@ -237,6 +242,18 @@ public class CustomerInterface extends javax.swing.JFrame {
         //Display all book in the system
         restTable();
     }//GEN-LAST:event_CancelActionPerformed
+    buyInterface buy = null;
+    private void BuyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuyActionPerformed
+        // TODO add your handling code here:
+         // back to the home screen
+        if (buy == null) {
+            buy = new buyInterface();
+        }
+        buy.setVisible(true);
+        this.setVisible(false);
+        
+        
+    }//GEN-LAST:event_BuyActionPerformed
 
     // clear saerch field 
     private void clearField() {
