@@ -44,9 +44,9 @@ public class User {
         return book;
     }
     public static String Buy(ArrayList<CartItemClass>CartItemList,User user){
+           
         StringBuilder Payment = new StringBuilder();
-        
-        Date oj = new Date() ;
+          Date oj = new Date() ;
         String date = oj.toString() ; 
              Payment.append(date);
         Payment.append("\n");

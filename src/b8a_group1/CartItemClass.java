@@ -12,9 +12,14 @@ import java.util.ArrayList;
  * @author Mona
  */
 public class CartItemClass {
+    
+
    double price;
    String title;
 
+    public static ArrayList<CartItemClass> CartItemList = new ArrayList<CartItemClass>()  ;
+
+       
     public double getPrice() {
         return price;
     }
@@ -30,7 +35,7 @@ public class CartItemClass {
         this.title = title;
     }
 
-    public CartItemClass(double price, String title) {
+    public CartItemClass(double price,String title) {
         this.price = price;
         this.title = title;
     }

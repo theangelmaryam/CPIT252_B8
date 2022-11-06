@@ -5,6 +5,7 @@
  */
 package b8a_group1;
 
+import static b8a_group1.CartItemClass.CartItemList;
 import java.util.ArrayList;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -60,15 +61,18 @@ public class UserTest {
     @Test
     public void testBuy() {
         System.out.println("Buy");
-        ArrayList<CartItemClass> CartItemList = new ArrayList<CartItemClass>();
-        User user = new User("mona","alasami" ,"056435678");
-        StringBuilder Payment = new StringBuilder();
-
-        String expResult = null ;
+        double price = 100.0 ;
+        String title = "And Then There Were None";
+        CartItemClass instance = new CartItemClass(price,title);
+        CartItemList.add(instance);
+        User user = new User("mona","alasami" ,"056435678"); 
+        String expResult = "41.0 And Then There Were None ";
         String result = User.Buy(CartItemList, user);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         //fail("The test case is a prototype.");
-    }
-    
+    }   
 }
+
+
+
