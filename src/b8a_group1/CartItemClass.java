@@ -9,17 +9,32 @@ import java.util.ArrayList;
 
 /**
  *
- * @author Mona
+ * @author reena
  */
 public class CartItemClass {
-    
-
-   double price;
-   String title;
+    double price;
+    String title;
+    String auther;
+    int year;
 
     public static ArrayList<CartItemClass> CartItemList = new ArrayList<CartItemClass>()  ;
+    
+    public String getAuther() {
+        return auther;
+    }
 
-       
+    public void setAuther(String auther) {
+        this.auther = auther;
+    }
+
+    public int getYear() {
+        return year;
+    }
+
+    public void setYear(int year) {
+        this.year = year;
+    }
+
     public double getPrice() {
         return price;
     }
@@ -38,6 +53,13 @@ public class CartItemClass {
     public CartItemClass(double price,String title) {
         this.price = price;
         this.title = title;
+    }
+
+    public CartItemClass(String title, String auther, int year, double price) {
+        this.price = price;
+        this.title = title;
+        this.auther = auther;
+        this.year = year;
     }
     
    public static boolean checkCartItemEixsts(String bookTitle, ArrayList<CartItemClass>array){
@@ -63,6 +85,5 @@ public class CartItemClass {
        }
        return total;
    }
-    
-}
 
+}

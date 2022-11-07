@@ -5,39 +5,39 @@
  */
 package b8a_group1;
 
+import static b8a_group1.CartItemClass.CartItemList;
 import static b8a_group1.CustomerInterface.dtm;
 import java.awt.print.PrinterException;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author Mona
+ * @author PC
  */
 public class buyInterface extends javax.swing.JFrame {
 
+    
     // Table
     String header[] = new String[]{"Book Title", "Book Author", "Book Year", "Book Price"};
     static DefaultTableModel dtm;
     int row, col;
-    private static ArrayList<CartItemClass> CartItemList = new ArrayList<CartItemClass>();
+    //private static ArrayList<CartItemClass> CartItemList = new ArrayList<CartItemClass>();
 
     /**
-     * Creates new form buyInterface
+     * Creates new form Customer
      */
     public buyInterface() {
         initComponents();
-
         // set table header and content 
         dtm = new DefaultTableModel(header, 0);
-        jTable1.setModel(dtm);
+        jTable2.setModel(dtm);
         this.setLocationRelativeTo(null);
         restTable();
+        
+        
     }
 
     /**
@@ -49,87 +49,53 @@ public class buyInterface extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        txtAPayment = new javax.swing.JTextArea();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
         txtFName = new javax.swing.JTextField();
         txtLName = new javax.swing.JTextField();
         txtPhoneNo = new javax.swing.JTextField();
-        jButton4 = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable2 = new javax.swing.JTable();
+        jButton3 = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
         lblMessage = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtAPayment = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setBackground(new java.awt.Color(229, 246, 255));
 
-        jTable1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jTable1.setForeground(new java.awt.Color(0, 51, 102));
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane1.setViewportView(jTable1);
+        jPanel1.setBackground(new java.awt.Color(229, 246, 255));
+        jPanel1.setForeground(new java.awt.Color(229, 246, 255));
 
-        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 51, 102));
-        jLabel1.setText("Choose Book/s:");
+        jLabel1.setText("Buy Book/s");
 
-        jButton1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(0, 51, 102));
-        jButton1.setText("Add to cart");
+        jButton1.setBackground(new java.awt.Color(89, 104, 178));
+        jButton1.setText("Buy");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
 
-        jButton2.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(0, 51, 102));
-        jButton2.setText("Back");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-
-        jButton3.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(0, 51, 102));
-        jButton3.setText("Print bill");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
-
-        txtAPayment.setColumns(20);
-        txtAPayment.setRows(5);
-        jScrollPane2.setViewportView(txtAPayment);
-
-        jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 51, 102));
-        jLabel2.setText("Last Name : ");
+        jLabel2.setText("First Name:");
 
-        jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 51, 102));
-        jLabel3.setText("First Name : ");
+        jLabel3.setText("Last Name:");
 
-        jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 51, 102));
-        jLabel4.setText("phone Number :");
+        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 51, 102));
+        jLabel5.setText("Phone Number:");
 
         txtFName.setBackground(new java.awt.Color(209, 223, 236));
 
@@ -142,92 +108,142 @@ public class buyInterface extends javax.swing.JFrame {
 
         txtPhoneNo.setBackground(new java.awt.Color(209, 223, 236));
 
-        jButton4.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jButton4.setForeground(new java.awt.Color(0, 51, 102));
-        jButton4.setText("Buy");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 51, 102));
+        jLabel4.setText("Chosen Book/s:");
+
+        jButton2.setBackground(new java.awt.Color(89, 104, 178));
+        jButton2.setText("Back");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                jButton2ActionPerformed(evt);
             }
         });
 
-        lblMessage.setForeground(new java.awt.Color(255, 0, 0));
+        jTable2.setBackground(new java.awt.Color(209, 223, 236));
+        jTable2.setForeground(new java.awt.Color(0, 51, 102));
+        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jTable2.setGridColor(new java.awt.Color(89, 104, 178));
+        jTable2.setSelectionForeground(new java.awt.Color(89, 104, 178));
+        jScrollPane2.setViewportView(jTable2);
+
+        jButton3.setBackground(new java.awt.Color(89, 104, 178));
+        jButton3.setText("Print Bill");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
+        jLabel6.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(0, 51, 102));
+        jLabel6.setText("Bill Details:");
+
+        txtAPayment.setColumns(20);
+        txtAPayment.setRows(5);
+        jScrollPane1.setViewportView(txtAPayment);
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(83, 83, 83)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(75, 75, 75)
+                                .addComponent(lblMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel6)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(394, 394, 394))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                            .addComponent(jLabel5)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                            .addComponent(txtPhoneNo, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(txtLName, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txtFName, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(8, 8, 8)
+                                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(46, 46, 46)
+                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(449, 449, 449)
+                .addComponent(jLabel1)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(43, 43, 43)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(txtFName, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(txtLName, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel5)
+                            .addComponent(txtPhoneNo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lblMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 342, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(29, 29, 29)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(35, 35, 35)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(49, 49, 49))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(50, 50, 50)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel3))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtFName, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtLName, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtPhoneNo, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(25, 25, 25)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(87, 87, 87)
-                                .addComponent(jButton1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lblMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)))
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(172, 172, 172))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 984, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(51, 51, 51)
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton1)
-                            .addComponent(lblMessage))
-                        .addGap(1, 1, 1)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel3)
-                            .addComponent(txtFName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(txtLName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel4)
-                            .addComponent(txtPhoneNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(33, 33, 33)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton3)
-                            .addComponent(jButton2)
-                            .addComponent(jButton4)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(38, 38, 38)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(65, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -235,26 +251,55 @@ public class buyInterface extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        int book = jTable1.getSelectedRow();
-        Book bookItem = new Book();
-        bookItem = Book.bookList.get(book);
-        if (CartItemClass.checkCartItemEixsts(bookItem.title, CartItemList)) {
-            CartItemList.add(new CartItemClass(bookItem.price, bookItem.title));
-            lblMessage.setText("Added to Cart Successfully !");
-        } else {
-            lblMessage.setText("Book Already Eixts In Your Cart!");
+        
+        if (txtFName.getText().equals("")) {
+            lblMessage.setText("Must Enter FirstName");
+            return;
         }
+        if (txtLName.getText().equals("")) {
+            lblMessage.setText("Must Enter LasName");
+            return;
+        }
+        if (txtPhoneNo.getText().equals("")) {
+            lblMessage.setText("Must Enter Phone Number");
+            return;
+        }
+        if (CartItemList.size() > 0) {
+            CustomerClass user=new CustomerClass();
+            user.first_name=txtFName.getText();
+            user.last_name=txtLName.getText();
+            user.phone_number =txtPhoneNo.getText();
+            
+           txtAPayment.setText(CustomerClass.Buy(CartItemList, user));
+           
+           txtFName.setText("");
+           txtLName.setText("");
+           txtPhoneNo.setText("");
+           lblMessage.setText("Payment Successfully done .click print to Print Invoice");
+            return;
 
+        }
+        lblMessage.setText("No item in your cart");
     }//GEN-LAST:event_jButton1ActionPerformed
-    Home home = null;
+
+    public static void restTable() {
+        dtm.setRowCount(0);//reset table and populate again with bookList
+        for (int i = 0; i < CartItemList.size(); i++) {
+            System.out.println(CartItemList.get(i).auther);
+            Object[] objs = {CartItemList.get(i).title, CartItemList.get(i).auther, CartItemList.get(i).year, CartItemList.get(i).price};
+            System.out.println(objs[0]);
+            dtm.addRow(objs);
+        }
+    }
+    
+    CustomerInterface customer = null;
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        // TODO add your handling code here:
-        if (home == null) {
-            home = new Home();
+        if(customer == null){
+            customer = new CustomerInterface();
         }
-
-        home.setVisible(true);
+        
+        customer.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -271,48 +316,6 @@ public class buyInterface extends javax.swing.JFrame {
     private void txtLNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLNameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtLNameActionPerformed
-
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-
-        if (txtFName.getText().equals("")) {
-            lblMessage.setText("Must Enter FirstName");
-            return;
-        }
-        if (txtLName.getText().equals("")) {
-            lblMessage.setText("Must Enter LasName");
-            return;
-        }
-        if (txtPhoneNo.getText().equals("")) {
-            lblMessage.setText("Must Enter Phone Number");
-            return;
-        }
-        if (CartItemList.size() > 0) {
-            User user=new User();
-            user.first_name=txtFName.getText();
-            user.last_name=txtLName.getText();
-            user.phone_no=txtPhoneNo.getText();
-            
-           txtAPayment.setText(User.Buy(CartItemList, user));
-           
-           txtFName.setText("");
-           txtLName.setText("");
-           txtPhoneNo.setText("");
-           lblMessage.setText("Payment Successfully done .click print to Print Invoice");
-            return;
-
-        }
-        lblMessage.setText("No item in your cart");
-        // TODO add your handling code here:
-
-
-    }//GEN-LAST:event_jButton4ActionPerformed
-    public static void restTable() {
-        dtm.setRowCount(0);//reset table and populate again with bookList
-        for (int i = 0; i < Book.bookList.size(); i++) {
-            Object[] objs = {Book.bookList.get(i).title, Book.bookList.get(i).auther, Book.bookList.get(i).year, Book.bookList.get(i).price};
-            dtm.addRow(objs);
-        }
-    }
 
     /**
      * @param args the command line arguments
@@ -340,20 +343,26 @@ public class buyInterface extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(buyInterface.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
- /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new buyInterface().setVisible(true);
             }
         });
-
+        
         // initiliz book list by file contant
         try {
             Book.initilizBookList();
         } catch (FileNotFoundException ex) {
-            Logger.getLogger(LibrarianInterface.class.getName()).log(Level.SEVERE, null, ex);
+            //Logger.getLogger(LibrarianInterface.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }
@@ -362,14 +371,16 @@ public class buyInterface extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTable2;
     private javax.swing.JLabel lblMessage;
     private javax.swing.JTextArea txtAPayment;
     private javax.swing.JTextField txtFName;

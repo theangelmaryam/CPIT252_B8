@@ -5,6 +5,7 @@
  */
 package b8a_group1;
 
+import static b8a_group1.CartItemClass.CartItemList;
 import java.util.ArrayList;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -17,9 +18,9 @@ import static org.junit.Assert.*;
  *
  * @author reena
  */
-public class UserTest {
+public class CustomerClassTest {
     
-    public UserTest() {
+    public CustomerClassTest() {
     }
     
     @BeforeClass
@@ -39,16 +40,19 @@ public class UserTest {
     }
 
     /**
-     * Test of search method, of class User.
+     * Test of Buy method, of class CustomerClass.
      */
     @Test
-    public void testSearch() {
-        System.out.println("search");
-        String bookTitle = "And Then There Were None";
-        Book book = new Book(bookTitle,"Agatha Christie",1939,41.0);
-        Book.bookList.add(book);
-        Book expResult = book;
-        Book result = User.search(bookTitle);
+    public void testBuy() {
+        System.out.println("Buy");
+        double price = 100.0 ;
+        String title = "And Then There Were None";
+        CartItemClass instance = new CartItemClass(price,title);
+        CartItemList.add(instance);
+        CustomerClass user = new CustomerClass("mona","alasami" ,"056435678"); 
+        CustomerClass.Buy(CartItemList, user);
+        boolean expResult = true;
+        boolean result = CustomerClass.successfulPayment; 
         assertEquals(expResult, result);
     }
     

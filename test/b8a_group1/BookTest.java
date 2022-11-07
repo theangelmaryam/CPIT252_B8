@@ -61,12 +61,8 @@ public class BookTest {
     @Test
     public void testToString() {
         System.out.println("toString");
-        String title = "And Then There Were None";
-        String author = "Agatha Christie";
-        int year = 1939;
-        double price = 41.0;
-        Book instance = new Book(title,author,year,price);
-        String expResult = "And Then There Were None,Agatha Christie,1939,41.00" ;
+        Book instance = new Book("And Then There Were None","Agatha Christie",1939,41.0);
+        String expResult = "Book Title: And Then There Were None, Book Author: Agatha Christie, Publish Year: 1939, Price: 41.0" ;
         String result = instance.toString();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.

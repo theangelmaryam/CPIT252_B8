@@ -33,7 +33,7 @@ public class Laibrarian extends User  {
         
         // write the book info that was add to the file "db of books"
         write = new PrintWriter(new BufferedWriter(new FileWriter(Book.books, true)));
-        write.println(bookTitle+" "+ bookAuthor+ " "+ bookYear + " "+ bookPrice);
+        write.println(bookTitle.replaceAll(" ", "_")+" "+ bookAuthor.replaceAll(" ", "_")+ " "+ bookYear + " "+ bookPrice);
         write.close();
     }
 

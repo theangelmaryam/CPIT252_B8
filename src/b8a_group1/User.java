@@ -6,7 +6,6 @@
 package b8a_group1;
 
 import java.util.ArrayList;
-import java.util.Date;
 
 /**
  *
@@ -17,22 +16,18 @@ public class User {
     String last_name;
     String userName;
     String password;
-    String phone_no;
     int ID;
-  static  boolean successfulPayment;
-    
 
     public User() {
         
     }
 
     
-    public User(String first_name, String last_name , String phone_no) {
+    public User(String first_name, String last_name, String userName, String password) {
         this.first_name = first_name;
         this.last_name = last_name;
         this.userName = userName;
         this.password = password;
-        this.phone_no = phone_no ;
     }
     
     public static Book search(String bookTitle){
@@ -43,30 +38,6 @@ public class User {
             }
         }
         return book;
-    }
-    public static String Buy(ArrayList<CartItemClass>CartItemList,User user){
-           
-        StringBuilder Payment = new StringBuilder();
-       Date oj = new Date() ;
-       String date = oj.toString() ; 
-       Payment.append(date+"\n"+"=================================\n"+"              Welcome To Books Store\n"+"=================================\n");
-           
-       Payment.append("Selected Books:\n");
-
-            for (int i = 0; i < CartItemList.size(); i++) {
-                Payment.append(CartItemList.get(i).title + "\t");
-
-            }
-             
-            Payment.append("TotalPrice:"+CartItemClass.calculateTotalPrice(CartItemList)+"\n\n"+"Customer Information : \n");
-            Payment.append("FirstName:"+user.first_name+"\n"+"LastName:"+user.last_name+"\n"+"Phone Number:"+user.phone_no+"\n");
-           
-            CartItemList.clear();
-            Payment.append("=================================\n"+"              Thank you  \n"+"=================================\n");
-
-            successfulPayment = true;
-            return Payment.toString();
-        
     }
     
 }

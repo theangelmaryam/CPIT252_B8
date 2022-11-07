@@ -21,7 +21,6 @@ public class B8A_Group1 {
         System.out.println("Hello I'm Hayat Alzhrani");
         System.out.println("Hello i'm Alromisaa Alghamdi");
         System.out.println("Hello , I'm Mona Alasami ");
-         new login().setVisible(true);
     }
     
 }
