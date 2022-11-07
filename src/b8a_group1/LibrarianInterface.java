@@ -5,7 +5,6 @@
  */
 package b8a_group1;
 
-
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -20,7 +19,6 @@ import javax.swing.table.DefaultTableModel;
  */
 public class LibrarianInterface extends javax.swing.JFrame {
 
-    //public ArrayList<Book> bookList;
     String header[] = new String[]{"Book Title", "Book Author", "Book Year", "Book Price"};
     DefaultTableModel dtm;
     int row, col;
@@ -141,6 +139,11 @@ public class LibrarianInterface extends javax.swing.JFrame {
         jTextBookAuthor.setBackground(new java.awt.Color(209, 223, 236));
 
         jTextBookYear.setBackground(new java.awt.Color(209, 223, 236));
+        jTextBookYear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextBookYearActionPerformed(evt);
+            }
+        });
 
         jTextBookPrice.setBackground(new java.awt.Color(209, 223, 236));
 
@@ -259,8 +262,7 @@ public class LibrarianInterface extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
-        
+
         checkMessage.setHorizontalAlignment(JLabel.CENTER);
         String bookTitle = jTextBookTitle.getText();
         String bookAuthor = jTextBookAuthor.getText();
@@ -292,15 +294,15 @@ public class LibrarianInterface extends javax.swing.JFrame {
         jTextBookYear.setText("");
         jTextBookPrice.setText("");
     }
-    
+
     // reset the table contant by all book in the system
-    private void restTable(){
+    private void restTable() {
         dtm.setRowCount(0);
         for (int i = 0; i < Book.bookList.size(); i++) {
             Object[] objs = {Book.bookList.get(i).title, Book.bookList.get(i).auther, Book.bookList.get(i).year, Book.bookList.get(i).price};
             dtm.addRow(objs);
         }
-    
+
     }
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         int dialogButton = JOptionPane.YES_NO_OPTION;
@@ -313,30 +315,29 @@ public class LibrarianInterface extends javax.swing.JFrame {
             } catch (Exception ex) {
                 Logger.getLogger(LibrarianInterface.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
-           
+
             dtm.setRowCount(0);//reset table and populate again with bookList
             for (int i = 0; i < Book.bookList.size(); i++) {
                 Object[] objs = {Book.bookList.get(i).title, Book.bookList.get(i).auther, Book.bookList.get(i).year, Book.bookList.get(i).price};
                 dtm.addRow(objs);
             }
-            checkMessage.setText(book.title+ " Was Delete From The System!");
+            checkMessage.setText(book.title + " Was Delete From The System!");
             clearField();
-        } 
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void SearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchActionPerformed
         // TODO add your handling code here:
-       
+
         // set lable for dialog
-       String input = JOptionPane.showInputDialog(this,"Search For Book");
-       // check if the book exist
-       Book book = Laibrarian.search(input);
-            if (book != null) {
-                JOptionPane.showMessageDialog(Search, "Found!", "Search book", 2);
-            }
-            else 
-                JOptionPane.showMessageDialog(Search, "Not Found!", "Search book", 2);
+        String input = JOptionPane.showInputDialog(this, "Search For Book");
+        // check if the book exist
+        Book book = Laibrarian.search(input);
+        if (book != null) {
+            JOptionPane.showMessageDialog(Search, "Found!", "Search book", 2);
+        } else {
+            JOptionPane.showMessageDialog(Search, "Not Found!", "Search book", 2);
+        }
     }//GEN-LAST:event_SearchActionPerformed
 
     Home home = null;
@@ -354,13 +355,16 @@ public class LibrarianInterface extends javax.swing.JFrame {
         // TODO add your handling code here:
         row = jTable2.getSelectedRow();
         col = jTable2.getColumnCount();
-        System.out.println(row+","+col);
         jTextBookTitle.setText(dtm.getValueAt(row, 0).toString());
         jTextBookAuthor.setText(dtm.getValueAt(row, 1).toString());
-        jTextBookYear.setText(dtm.getValueAt(row, 1).toString());
-        jTextBookPrice.setText(dtm.getValueAt(row, 1).toString());
-        
+        jTextBookYear.setText(dtm.getValueAt(row, 2).toString());
+        jTextBookPrice.setText(dtm.getValueAt(row, 3).toString());
+
     }//GEN-LAST:event_jTable2MouseClicked
+
+    private void jTextBookYearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextBookYearActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextBookYearActionPerformed
 
     /**
      * @param args the command line arguments
@@ -395,7 +399,7 @@ public class LibrarianInterface extends javax.swing.JFrame {
                 new LibrarianInterface().setVisible(true);
             }
         });
-        
+
         // initiliz book list by file contant
         try {
             Book.initilizBookList();

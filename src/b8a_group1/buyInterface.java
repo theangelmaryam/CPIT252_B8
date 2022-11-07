@@ -19,7 +19,6 @@ import javax.swing.table.DefaultTableModel;
  */
 public class buyInterface extends javax.swing.JFrame {
 
-    
     // Table
     String header[] = new String[]{"Book Title", "Book Author", "Book Year", "Book Price"};
     static DefaultTableModel dtm;
@@ -36,8 +35,7 @@ public class buyInterface extends javax.swing.JFrame {
         jTable2.setModel(dtm);
         this.setLocationRelativeTo(null);
         restTable();
-        
-        
+
     }
 
     /**
@@ -251,7 +249,7 @@ public class buyInterface extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        
+
         if (txtFName.getText().equals("")) {
             lblMessage.setText("Must Enter FirstName");
             return;
@@ -265,17 +263,17 @@ public class buyInterface extends javax.swing.JFrame {
             return;
         }
         if (CartItemList.size() > 0) {
-            CustomerClass user=new CustomerClass();
-            user.first_name=txtFName.getText();
-            user.last_name=txtLName.getText();
-            user.phone_number =txtPhoneNo.getText();
-            
-           txtAPayment.setText(CustomerClass.Buy(CartItemList, user));
-           
-           txtFName.setText("");
-           txtLName.setText("");
-           txtPhoneNo.setText("");
-           lblMessage.setText("Payment Successfully done .click print to Print Invoice");
+            CustomerClass user = new CustomerClass();
+            user.first_name = txtFName.getText();
+            user.last_name = txtLName.getText();
+            user.phone_number = txtPhoneNo.getText();
+
+            txtAPayment.setText(CustomerClass.Buy(CartItemList, user));
+
+            txtFName.setText("");
+            txtLName.setText("");
+            txtPhoneNo.setText("");
+            lblMessage.setText("Payment Successfully done .click print to Print Invoice");
             return;
 
         }
@@ -285,20 +283,18 @@ public class buyInterface extends javax.swing.JFrame {
     public static void restTable() {
         dtm.setRowCount(0);//reset table and populate again with bookList
         for (int i = 0; i < CartItemList.size(); i++) {
-            System.out.println(CartItemList.get(i).auther);
             Object[] objs = {CartItemList.get(i).title, CartItemList.get(i).auther, CartItemList.get(i).year, CartItemList.get(i).price};
-            System.out.println(objs[0]);
             dtm.addRow(objs);
         }
     }
-    
+
     CustomerInterface customer = null;
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        if(customer == null){
+        if (customer == null) {
             customer = new CustomerInterface();
         }
-        
+
         customer.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton2ActionPerformed
@@ -357,12 +353,12 @@ public class buyInterface extends javax.swing.JFrame {
                 new buyInterface().setVisible(true);
             }
         });
-        
+
         // initiliz book list by file contant
         try {
             Book.initilizBookList();
         } catch (FileNotFoundException ex) {
-            //Logger.getLogger(LibrarianInterface.class.getName()).log(Level.SEVERE, null, ex);
+
         }
 
     }

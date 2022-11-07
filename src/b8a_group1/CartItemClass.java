@@ -12,13 +12,14 @@ import java.util.ArrayList;
  * @author reena
  */
 public class CartItemClass {
+
     double price;
     String title;
     String auther;
     int year;
 
-    public static ArrayList<CartItemClass> CartItemList = new ArrayList<CartItemClass>()  ;
-    
+    public static ArrayList<CartItemClass> CartItemList = new ArrayList<CartItemClass>();
+
     public String getAuther() {
         return auther;
     }
@@ -38,6 +39,7 @@ public class CartItemClass {
     public double getPrice() {
         return price;
     }
+
     public void setPrice(double price) {
         this.price = price;
     }
@@ -50,7 +52,7 @@ public class CartItemClass {
         this.title = title;
     }
 
-    public CartItemClass(double price,String title) {
+    public CartItemClass(double price, String title) {
         this.price = price;
         this.title = title;
     }
@@ -61,8 +63,8 @@ public class CartItemClass {
         this.auther = auther;
         this.year = year;
     }
-    
-   public static boolean checkCartItemEixsts(String bookTitle, ArrayList<CartItemClass>array){
+
+    public static boolean checkCartItemEixsts(String bookTitle, ArrayList<CartItemClass> array) {
         boolean isEixts = false;
         if (array.isEmpty()) {
             isEixts = true;
@@ -77,13 +79,14 @@ public class CartItemClass {
         }
         return isEixts;
     }
-   public static double calculateTotalPrice(ArrayList<CartItemClass>array){
-       double total=0.0;
-       for (int i = 0; i < array.size(); i++) {
-             total += array.get(i).price;
-           
-       }
-       return total;
-   }
+
+    public static double calculateTotalPrice(ArrayList<CartItemClass> array) {
+        double total = 0.0;
+        for (int i = 0; i < array.size(); i++) {
+            total += array.get(i).price;
+
+        }
+        return total;
+    }
 
 }

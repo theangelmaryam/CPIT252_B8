@@ -19,17 +19,18 @@ import javax.swing.table.DefaultTableModel;
  * @author reena
  */
 public class CustomerInterface extends javax.swing.JFrame {
+
     // Table
     String header[] = new String[]{"Book Title", "Book Author", "Book Year", "Book Price"};
     static DefaultTableModel dtm;
     int row, col;
-    
+
     /**
      * Creates new form CustomerInterfac
      */
     public CustomerInterface() {
         initComponents();
-        
+
         // set table header and content 
         dtm = new DefaultTableModel(header, 0);
         Result.setModel(dtm);
@@ -213,42 +214,40 @@ public class CustomerInterface extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void SearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchActionPerformed
-    
-    // get the book title from the customer
-    String bookTitle = BookTitle.getText();
-    // save book info in book object
-    Book book = CustomerClass.search(bookTitle);
-    
-    // if the book is exist
+
+        // get the book title from the customer
+        String bookTitle = BookTitle.getText();
+        // save book info in book object
+        Book book = CustomerClass.search(bookTitle);
+
+        // if the book is exist
         if (book != null) {
             //write the book info in the table
             dtm.setRowCount(0);
-            Object[] objs = {book.title, book.auther,book.year,book.price};
+            Object[] objs = {book.title, book.auther, book.year, book.price};
             dtm.addRow(objs);
-            
+
+        } else {
+            // display dialog message
+            JOptionPane.showMessageDialog(Search, "Not Found!", "Search book", 2);
+
         }
-        else{
-          // display dialog message
-           JOptionPane.showMessageDialog(Search, "Not Found!", "Search book", 2);
-           
-        }
-        
+
         // clear search field
         clearField();
     }//GEN-LAST:event_SearchActionPerformed
 
     private void ResultMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ResultMouseClicked
         // TODO add your handling code here:
-        
+
         this.row = Result.getSelectedRow();
         this.col = Result.getSelectedColumn();
-        
-        System.out.println(row +","+ col);
+
         BookTitle.setText(dtm.getValueAt(row, 0).toString());
-        
+
     }//GEN-LAST:event_ResultMouseClicked
 
-     Home home = null;
+    Home home = null;
     private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
         // TODO add your handling code here:
         // back to the home screen
@@ -262,7 +261,7 @@ public class CustomerInterface extends javax.swing.JFrame {
     private void BookTitleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BookTitleActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_BookTitleActionPerformed
-    
+
     // cancel search opration
     private void CancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelActionPerformed
         //Display all book in the system
@@ -275,46 +274,42 @@ public class CustomerInterface extends javax.swing.JFrame {
         Book bookItem = new Book();
         bookItem = Book.bookList.get(book);
         if (CartItemClass.checkCartItemEixsts(bookItem.title, CartItemList)) {
-            CartItemList.add(new CartItemClass(bookItem.title,bookItem.auther,bookItem.year,bookItem.price));
+            CartItemList.add(new CartItemClass(bookItem.title, bookItem.auther, bookItem.year, bookItem.price));
             lblMessage.setText("Added to Cart Successfully !");
         } else {
             lblMessage.setText("Book Already Eixts In Your Cart!");
         }
-        for (int i = 0; i < CartItemList.size(); i++) {
-            System.out.println(CartItemList.get(i).title);
-        }
+
     }//GEN-LAST:event_BuyActionPerformed
 
     buyInterface buy = null;
     private void nextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextActionPerformed
         // TODO add your handling code here:
-        
-        if(buy == null){
+
+        if (buy == null) {
             buy = new buyInterface();
         }
-        
+
         buy.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_nextActionPerformed
-    
-    
-    
 
     // clear saerch field 
     private void clearField() {
-          BookTitle.requestFocus();
-            BookTitle.setText("");
+        BookTitle.requestFocus();
+        BookTitle.setText("");
     }
-    
+
     // reset the table contant by all book in the system
-    public static void restTable(){
+    public static void restTable() {
         dtm.setRowCount(0);//reset table and populate again with bookList
-            for (int i = 0; i < Book.bookList.size(); i++) {
-                Object[] objs = {Book.bookList.get(i).title, Book.bookList.get(i).auther, Book.bookList.get(i).year, Book.bookList.get(i).price};
-                dtm.addRow(objs);
-            }
-    
+        for (int i = 0; i < Book.bookList.size(); i++) {
+            Object[] objs = {Book.bookList.get(i).title, Book.bookList.get(i).auther, Book.bookList.get(i).year, Book.bookList.get(i).price};
+            dtm.addRow(objs);
+        }
+
     }
+
     /**
      * @param args the command line arguments
      */
@@ -351,7 +346,7 @@ public class CustomerInterface extends javax.swing.JFrame {
                 new CustomerInterface().setVisible(true);
             }
         });
-        
+
         // initiliz book list by file contant
         try {
             Book.initilizBookList();

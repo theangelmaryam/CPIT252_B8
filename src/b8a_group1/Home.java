@@ -102,23 +102,23 @@ public class Home extends javax.swing.JFrame {
     LibrarianInterface book = null;
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        if(book == null){
+        if (book == null) {
             book = new LibrarianInterface();
         }
-        
+
         book.setVisible(true);
         this.setVisible(false);
-        
-        
+
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     CustomerInterface customer = null;
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        if(customer == null){
+        if (customer == null) {
             customer = new CustomerInterface();
         }
-        
+
         customer.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton2ActionPerformed
