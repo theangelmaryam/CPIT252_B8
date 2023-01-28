@@ -23,7 +23,7 @@ public class CustomerInterface extends javax.swing.JFrame {
     // Table
     String header[] = new String[]{"Book Title", "Book Author", "Book Year", "Book Price"};
     static DefaultTableModel dtm;
-    int row, col;
+    static int row, col;
 
     /**
      * Creates new form CustomerInterfac

@@ -21,7 +21,7 @@ public class LibrarianInterface extends javax.swing.JFrame {
 
     String header[] = new String[]{"Book Title", "Book Author", "Book Year", "Book Price"};
     DefaultTableModel dtm;
-    int row, col;
+    static int row, col;
 
     /**
      * Creates new form Librarian
@@ -262,7 +262,7 @@ public class LibrarianInterface extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-
+        
         checkMessage.setHorizontalAlignment(JLabel.CENTER);
         String bookTitle = jTextBookTitle.getText();
         String bookAuthor = jTextBookAuthor.getText();
@@ -273,7 +273,23 @@ public class LibrarianInterface extends javax.swing.JFrame {
             checkMessage.setText("Book Already Added In The System!");
         } else {
             try {
-                Laibrarian.addBook(bookTitle, bookAuthor, bookYear, bookPrice);
+                Context context = new Context(new OperationAdd());
+                context.executeStrategy(bookTitle, bookAuthor, bookYear, bookPrice);
+                
+                
+//                
+//                BookMaker bookMaker = new BookMaker();
+//                if(bookAuthor.equalsIgnoreCase("Hayat")){
+//                    bookMaker.addHayatBook(bookTitle, bookAuthor, bookYear, bookPrice);
+//                }
+//                else if(bookAuthor.equalsIgnoreCase("Rutanah")){
+//                    bookMaker.addRutanahBook(bookTitle, bookAuthor, bookYear, bookPrice);
+//                }
+//                else if(bookAuthor.equalsIgnoreCase("Maryam")){
+//                    bookMaker.addMaryamBook(bookTitle, bookAuthor, bookYear, bookPrice);                    
+//                }
+//                Laibrarian.addBook(bookTitle, bookAuthor, bookYear, bookPrice);
+                
             } catch (Exception ex) {
                 Logger.getLogger(LibrarianInterface.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -305,17 +321,23 @@ public class LibrarianInterface extends javax.swing.JFrame {
 
     }
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        
+        
         int dialogButton = JOptionPane.YES_NO_OPTION;
         int dialogResult = JOptionPane.showConfirmDialog(this, "Delete this data", "Delete", dialogButton);
         if (dialogResult == 0) {
-            dtm.removeRow(row);
+             Context context = new Context(new OperationAdd());
+             
             Book book = null;
             try {
-                book = Laibrarian.deleteBook(row);
+            
+            book = context.executeStrategy("", "", 0, 0.0);
+            dtm.removeRow(row);
+//                book = Laibrarian.deleteBook(row);
             } catch (Exception ex) {
                 Logger.getLogger(LibrarianInterface.class.getName()).log(Level.SEVERE, null, ex);
             }
-
+            
             dtm.setRowCount(0);//reset table and populate again with bookList
             for (int i = 0; i < Book.bookList.size(); i++) {
                 Object[] objs = {Book.bookList.get(i).title, Book.bookList.get(i).auther, Book.bookList.get(i).year, Book.bookList.get(i).price};
