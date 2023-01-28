@@ -326,14 +326,12 @@ public class LibrarianInterface extends javax.swing.JFrame {
         int dialogButton = JOptionPane.YES_NO_OPTION;
         int dialogResult = JOptionPane.showConfirmDialog(this, "Delete this data", "Delete", dialogButton);
         if (dialogResult == 0) {
-             Context context = new Context(new OperationAdd());
-             
+//             Context context = new Context(new OperationAdd());
+//             Book book =context.executeStrategy("", "", 0, 0.0);
+            dtm.removeRow(row);
             Book book = null;
             try {
-            
-            book = context.executeStrategy("", "", 0, 0.0);
-            dtm.removeRow(row);
-//                book = Laibrarian.deleteBook(row);
+                book = Laibrarian.deleteBook(row);
             } catch (Exception ex) {
                 Logger.getLogger(LibrarianInterface.class.getName()).log(Level.SEVERE, null, ex);
             }
