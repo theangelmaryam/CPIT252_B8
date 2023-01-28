@@ -22,6 +22,7 @@ public class B8A_Group1 {
         System.out.println("Hello i'm Alromisaa Alghamdi");
         System.out.println("Hello , I'm Mona Alasami ");
         System.out.println("Test1");
+        System.out.println("Test2");
     }
     
 }
