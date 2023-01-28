@@ -71,6 +71,7 @@ public class CustomerInterface extends javax.swing.JFrame {
         });
 
         Search.setBackground(new java.awt.Color(89, 104, 178));
+        Search.setForeground(new java.awt.Color(255, 255, 255));
         Search.setText("Search");
         Search.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -79,6 +80,7 @@ public class CustomerInterface extends javax.swing.JFrame {
         });
 
         Buy.setBackground(new java.awt.Color(89, 104, 178));
+        Buy.setForeground(new java.awt.Color(255, 255, 255));
         Buy.setText("Add to Cart");
         Buy.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -113,6 +115,7 @@ public class CustomerInterface extends javax.swing.JFrame {
         jScrollPane1.setViewportView(Result);
 
         back.setBackground(new java.awt.Color(89, 104, 178));
+        back.setForeground(new java.awt.Color(255, 255, 255));
         back.setText("Back");
         back.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -125,6 +128,7 @@ public class CustomerInterface extends javax.swing.JFrame {
         jLabel3.setText("Enter Book Titel:");
 
         Cancel.setBackground(new java.awt.Color(89, 104, 178));
+        Cancel.setForeground(new java.awt.Color(255, 255, 255));
         Cancel.setText("Cancel");
         Cancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -136,6 +140,7 @@ public class CustomerInterface extends javax.swing.JFrame {
         lblMessage.setForeground(new java.awt.Color(153, 153, 255));
 
         next.setBackground(new java.awt.Color(89, 104, 178));
+        next.setForeground(new java.awt.Color(255, 255, 255));
         next.setText("Next");
         next.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

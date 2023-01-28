@@ -96,6 +96,11 @@ public class buyInterface extends javax.swing.JFrame {
         jLabel5.setText("Phone Number:");
 
         txtFName.setBackground(new java.awt.Color(209, 223, 236));
+        txtFName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtFNameActionPerformed(evt);
+            }
+        });
 
         txtLName.setBackground(new java.awt.Color(209, 223, 236));
         txtLName.addActionListener(new java.awt.event.ActionListener() {
@@ -312,6 +317,10 @@ public class buyInterface extends javax.swing.JFrame {
     private void txtLNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLNameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtLNameActionPerformed
+
+    private void txtFNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtFNameActionPerformed
 
     /**
      * @param args the command line arguments
