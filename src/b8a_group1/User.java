@@ -1,16 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package b8a_group1;
 
 import java.util.ArrayList;
 
-/**
- *
- * @author reena
- */
 public class User {
 
     String first_name;
@@ -20,7 +11,6 @@ public class User {
     int ID;
 
     public User() {
-
     }
 
     public User(String first_name, String last_name, String userName, String password) {

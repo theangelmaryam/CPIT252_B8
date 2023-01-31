@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package b8a_group1;
 
 import static b8a_group1.CartItemClass.CartItemList;
@@ -13,17 +8,12 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author PC
- */
 public class buyInterface extends javax.swing.JFrame {
 
     // Table
     String header[] = new String[]{"Book Title", "Book Author", "Book Year", "Book Price"};
     static DefaultTableModel dtm;
     int row, col;
-    //private static ArrayList<CartItemClass> CartItemList = new ArrayList<CartItemClass>();
 
     /**
      * Creates new form Customer

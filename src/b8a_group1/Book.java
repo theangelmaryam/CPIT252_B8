@@ -1,20 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package b8a_group1;
 
-import static b8a_group1.Laibrarian.read;
+import static b8a_group1.LibrarianOperation.read;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-/**
- *
- * @author PC
- */
 public class Book {
 
     public static ArrayList<Book> bookList = new ArrayList<Book>();

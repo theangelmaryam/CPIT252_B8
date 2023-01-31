@@ -9,11 +9,9 @@ import java.io.FileNotFoundException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- *
- * @author PC
- */
 public class Home extends javax.swing.JFrame {
+
+    InterfaceMaker InterfaceMaker = new InterfaceMaker();
 
     /**
      * Creates new form Home
@@ -105,24 +103,13 @@ public class Home extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    SignUp signup = null;
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        if (signup == null) {
-            signup = new SignUp();
-        }
-        signup.setVisible(true);
+        InterfaceMaker.displayLibrarianInterface();
         this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    CustomerInterface customer = null;
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-        if (customer == null) {
-            customer = new CustomerInterface();
-        }
-
-        customer.setVisible(true);
+        InterfaceMaker.displayCustomerInterface();
         this.setVisible(false);
     }//GEN-LAST:event_jButton2ActionPerformed
 

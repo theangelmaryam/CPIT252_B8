@@ -1,16 +1,8 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package b8a_group1;
 
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author maryam
- */
 public class LogInInterface extends javax.swing.JFrame {
 
     /**
@@ -156,11 +148,11 @@ public class LogInInterface extends javax.swing.JFrame {
     private void usernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_usernameActionPerformed
-    SignUp signup = null;
+    SignUpInterface signup = null;
     private void SignUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SignUpActionPerformed
         // TODO add your handling code here:
         if (signup == null) {
-            signup = new SignUp();
+            signup = new SignUpInterface();
         }
 
         signup.setVisible(true);
@@ -180,8 +172,8 @@ public class LogInInterface extends javax.swing.JFrame {
             if (book == null) {
                 book = new LibrarianInterface();
             }
-                this.setVisible(false);
-                book.setVisible(true);
+            this.setVisible(false);
+            book.setVisible(true);
         }
     }//GEN-LAST:event_signinActionPerformed
 

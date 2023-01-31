@@ -74,7 +74,7 @@ public class LaibrarianTest {
         bookList.add(instance);
         for (int i = 0; i < bookList.size(); i++) {
             if(bookList.get(i).title.equals(instance)){
-            Object result = Laibrarian.deleteBook(i);;
+            Object result = LibrarianOperation.deleteBook(i);;
             Object expResult = null;
             assertEquals(expResult, result);
             }

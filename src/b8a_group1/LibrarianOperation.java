@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package b8a_group1;
 
 import java.io.BufferedWriter;
@@ -12,16 +7,12 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-/**
- *
- * @author reena
- */
-public class Laibrarian extends User {
+public class LibrarianOperation extends User {
 
     static Scanner read;
     static PrintWriter write;
 
-    public Laibrarian() {
+    public LibrarianOperation() {
 
     }
 
